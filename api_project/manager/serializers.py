@@ -19,8 +19,8 @@ class PostSerializer(serializers.Serializer):
 
     def validate_audio_file(self, value):
 
-        if not value.content_type.endswith('audio/wav'):
-            raise serializers.ValidationError("無効なファイル形式です。wavファイルのみ許可されています。")
+        if not value.content_type.endswith('audio/mp3'):
+            raise serializers.ValidationError("無効なファイル形式です。mp3ファイルのみ許可されています。")
         return value
 
     def validate_json_data(self, data):

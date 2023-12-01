@@ -32,7 +32,7 @@ class TalkAPIView(APIView):
 
             # 音声ファイルのContent-Typeを指定
             response = Response(data, content_type='application/json', status=status.HTTP_200_OK)
-            response['Content-Disposition'] = 'attachment; filename="audio_file.wav"'
+            response['Content-Disposition'] = 'attachment; filename="audio_file.mp3"'
             return response
 
         else:

@@ -1,17 +1,15 @@
 import openai
 from django.conf import settings
-from .textToVoice import VoiceGenerate
+# from .textToVoice import VoiceGenerate
 from .voiceToText_cloudLib import transcribe_audio_file
+from .textToVoice_cloudLib import text_to_speech
 
 def VoiceToText(audio_data):
-    
     text = transcribe_audio_file(audio_data)
     return text
 
 def TextToVoice(text):
-    vg = VoiceGenerate(text)
-    vg.query_generate()
-    audio_data = vg.voice_generate()
+    audio_data = text_to_speech(text)
     return audio_data
 
 class JsonToTalk():
@@ -51,17 +49,17 @@ json形式で返答
     #会話用のapiと連携
     def talk(self):
 
-        openai.api_key = settings.OPENAI_APIKEY
+        # openai.api_key = settings.OPENAI_APIKEY
 
-        prompt = f"{self.base_prompt}{self.json_data}"
+        # prompt = f"{self.base_prompt}{self.json_data}"
 
-        response = openai.Completion.create(
-        prompt=prompt,
-        engine="text-davinci-003",
-        max_tokens=1024
-        )
+        # response = openai.Completion.create(
+        # prompt=prompt,
+        # engine="text-davinci-003",
+        # max_tokens=1024
+        # )
 
-        self.json_data = response.choices[0].text.strip()
+        # self.json_data = response.choices[0].text.strip()
 
         return self.json_data[self.new_answer][self.answer]
 

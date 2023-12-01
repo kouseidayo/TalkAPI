@@ -141,6 +141,5 @@ LOGGING = {
 }
 
 GOOGLE_API_ENVIRONMENT_VAR_NAME = 'GOOGLE_APPLICATION_CREDENTIALS'
-GOOGLE_API_ENVIRONMENT_VAR_VALUE = 'C:/Users/mfh077_user.MEFUREDMN/Desktop/TalkAPI/api_project/manager/TalkLibrary/google_cloud/formal-province-366012-adf03e00787f.json'
-VOICEVOX_SERVERRUN_PATH = 'C:/Users/mfh077_user.MEFUREDMN/AppData/Local/Programs/VOICEVOX/run.exe'
+GOOGLE_API_ENVIRONMENT_VAR_VALUE = f'{BASE_DIR}/manager/TalkLibrary/google_cloud/formal-province-366012-adf03e00787f.json'
 OPENAI_APIKEY = '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'
