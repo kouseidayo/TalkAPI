@@ -1,8 +1,6 @@
-import openai
-from django.conf import settings
-# from .textToVoice import VoiceGenerate
 from .voiceToText_cloudLib import transcribe_audio_file
 from .textToVoice_cloudLib import text_to_speech
+from .talk_cloudLib import interview
 
 def VoiceToText(audio_data):
     text = transcribe_audio_file(audio_data)
@@ -18,6 +16,7 @@ class JsonToTalk():
     new_answer = "<new_answer>"
     responses = 'responses'
     answer = 'answer'
+    add = 'add'
 
     user_template= {"name": "user", answer: ""}
     assistant_template = {"name": "assistant", answer: new_answer}
@@ -35,7 +34,7 @@ json形式で返答
         
     def TransTalk(self,text):
         #assistantの入力欄の生成
-        self.json_data[self.new_answer] = self.assistant_template
+        self.json_data[self.add] = self.assistant_template
         
         #responses内のuserの発言を生成
         self.user_template[self.answer] = text  
@@ -49,19 +48,18 @@ json形式で返答
     #会話用のapiと連携
     def talk(self):
 
-        # openai.api_key = settings.OPENAI_APIKEY
+        self.json_data = interview(
+            temperature=0.2,
+            project_id='formal-province-366012',
+            location='asia-northeast1',
+            max_output_tokens=256,
+            top_k=40,
+            top_p=0.8,
+            model_name="text-bison@001",
+            prompt=f"{self.base_prompt}{self.json_data}"
+            )
 
-        # prompt = f"{self.base_prompt}{self.json_data}"
-
-        # response = openai.Completion.create(
-        # prompt=prompt,
-        # engine="text-davinci-003",
-        # max_tokens=1024
-        # )
-
-        # self.json_data = response.choices[0].text.strip()
-
-        return self.json_data[self.new_answer][self.answer]
+        return self.json_data[self.add][self.answer]
 
     def TransResponse(self,audio_data):
         
@@ -70,7 +68,7 @@ json形式で返答
             self.json_data[self.audio_file] = audio_data
         
         #返答の入力欄の削除
-        if self.new_answer in self.json_data:
-            del self.json_data[self.new_answer]
+        if self.add in self.json_data:
+            del self.json_data[self.add]
         
         return self.json_data
