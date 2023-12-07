@@ -7,7 +7,7 @@ def transcribe_audio_file(content):
 
     audio = speech.RecognitionAudio(content=content)
     config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        encoding=speech.RecognitionConfig.AudioEncoding.MP3,
         sample_rate_hertz=24000,
         language_code="ja-JP",
         # speech_contexts=[{"phrases": ["ハンバーグ","ござる"]}],

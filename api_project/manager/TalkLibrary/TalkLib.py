@@ -22,11 +22,11 @@ class JsonToTalk():
     assistant_template = {"name": "assistant", answer: new_answer}
 
     base_prompt =f"""
-#次のデータを以下の条件で返して
+#次の<データ>を以下の条件で返して
 {new_answer}に当てはまる答えを入れる
-json形式で返答
+必ずjson形式で返答
 
-
+<データ>
 """
 
     def __init__(self,json_data):
@@ -47,7 +47,9 @@ json形式で返答
 
     #会話用のapiと連携
     def talk(self):
-
+        with open('logaaa.txt', 'w',encoding='utf-8') as file:
+            file.write(f'{self.base_prompt}{self.json_data}aaa')
+            
         self.json_data = interview(
             temperature=0.2,
             project_id='formal-province-366012',
@@ -58,6 +60,9 @@ json形式で返答
             model_name="text-bison@001",
             prompt=f"{self.base_prompt}{self.json_data}"
             )
+        
+
+        
 
         return self.json_data[self.add][self.answer]
 

@@ -17,6 +17,10 @@ class TalkAPIView(APIView):
             
             #音声ファイルをテキストへ変換
             user_text = VoiceToText(user_audio_file)
+
+            if user_text == None:
+                return Response('無効な音声データです', 
+                                status=status.HTTP_400_BAD_REQUEST)
             
             #会話用のapiに適した形に変換
             Talk.TransTalk(user_text)

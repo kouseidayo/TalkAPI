@@ -2,7 +2,7 @@ import vertexai
 from vertexai.language_models import TextGenerationModel
 import json
 
-def is_json_string(data):
+def is_json(data):
     try:
         json.loads(data)
         return True
@@ -37,7 +37,7 @@ def interview(
     )
     
     # 文字列がJSON形式かどうかの判断
-    if is_json_string(response.text):
+    if is_json(response.text):
         return response.text
     else:
         return json.loads(response.text.replace("'", "\""))

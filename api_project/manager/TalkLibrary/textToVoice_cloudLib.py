@@ -27,6 +27,6 @@ def text_to_speech(text):
     return response.audio_content
 
 if __name__ == '__main__':
-    audio_content = text_to_speech('こんにちは')
-    with open('output.wav', 'wb') as out:
+    audio_content = text_to_speech('あなたの名前を教えてください')
+    with open('what_your_name.mp3', 'wb') as out:
         out.write(audio_content)
