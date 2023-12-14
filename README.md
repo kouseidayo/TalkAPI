@@ -1,6 +1,6 @@
-#TalkAPI
+# TalkAPI
 
-###使用方法
+### 使用方法
 ```
 import requests
 import json
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     main()
 ```
 
-##送信データ形式
+## 送信データ形式
 url
 ```
 /api/talk/
@@ -53,7 +53,7 @@ content_type
 audio/mp3
 ```
 
-##処理の流れ
+## 処理の流れ
 urls
 ↓
 views
