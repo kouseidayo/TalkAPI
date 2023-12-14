@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s^emh2t5nze8qx+bl=!r1q#9d#%v^dspm-uj&hww(f&c-im$5b'
+SECRET_KEY = '***'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['example.com']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manager',#add
     'rest_framework',#add
-    # 'manager.apps.ManagerConfig',#add
 ]
 
 MIDDLEWARE = [
@@ -141,5 +140,4 @@ LOGGING = {
 }
 
 GOOGLE_API_ENVIRONMENT_VAR_NAME = 'GOOGLE_APPLICATION_CREDENTIALS'
-GOOGLE_API_ENVIRONMENT_VAR_VALUE = f'{BASE_DIR}/manager/TalkLibrary/google_cloud/formal-province-366012-adf03e00787f.json'
-OPENAI_APIKEY = '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'
+GOOGLE_API_ENVIRONMENT_VAR_VALUE = f'{BASE_DIR}/manager/TalkLibrary/google_cloud/your_google_auth.json'

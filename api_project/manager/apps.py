@@ -1,11 +1,6 @@
 from django.apps import AppConfig
 from django.conf import settings
 import os
-import subprocess
-
-
-def run_voicevox_server():
-    subprocess.run(settings.VOICEVOX_SERVERRUN_PATH)
 
 class ManagerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'

@@ -47,9 +47,7 @@ class JsonToTalk():
 
     #会話用のapiと連携
     def talk(self):
-        with open('logaaa.txt', 'w',encoding='utf-8') as file:
-            file.write(f'{self.base_prompt}{self.json_data}aaa')
-            
+      
         self.json_data = interview(
             temperature=0.2,
             project_id='formal-province-366012',
@@ -61,9 +59,6 @@ class JsonToTalk():
             prompt=f"{self.base_prompt}{self.json_data}"
             )
         
-
-        
-
         return self.json_data[self.add][self.answer]
 
     def TransResponse(self,audio_data):
