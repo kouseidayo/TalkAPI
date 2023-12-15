@@ -42,8 +42,8 @@ url
 json
 ```
 {'responses':[
-    {'name':'user','answer','testmessage'},
-    {'name':'assistant','answer','testmessage'}
+    {'name':'user','answer':'testmessage'},
+    {'name':'assistant','answer':'testmessage'}
     ]
 }
 ```
